@@ -209,7 +209,8 @@ def delete_hod(request,id):
 
 def hod_approve(request,product_part_number):
     g = ais.objects.all() 
-    your_datetime = datetime(2023, 1, 15 ) 
+    your_datetime = datetime(2023, 1, 15 )  
+    
     dates=your_datetime.date()
        
     a=ais.objects.filter(product_part_number=product_part_number).update(ApprovedByHod = True,ApprovedByHodUser=localStorage.getItem("user_name"),
