@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REJECT STATUS</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+           
+        }
+
+        header {
+            background-color: #fffafa;
+            color: #fff;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        header img {
+            max-height: 100px; /* Set the maximum height of your logo image */
+        }
+
+        nav {
+            background-color: #070707;
+            color: #fff;
+            padding: 10px;
+            
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        nav u1 p{
+            display: flex;
+            justify-content: flex-start;
+            
+
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        nav li {
+            margin-left: 20px;
+        }
+        li a.active{
+            background-color:white ;
+            color: black;
+        }
+
+        section {
+            text-align: center;
+            margin: 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        thead {
+            background-color: #8787c5;
+            color: rgb(12, 12, 12);
+            text-align: center;
+        }
+        td,th {
+            border: 1px solid #e2dcdc;
+            padding: 15px;
+            text-align: center;
+        }
+            tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #e0e0e0;
+        }
+
+        th {
+            background-color: #86a8f0;
+        }
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+           
+            color: #f2eff5;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            background-color: black;
+        }
+
+        a:hover {
+            background-color: #45a049;
+        }
+     
+       a.act{
+        background-color: white;
+        color: black;
+       }
+        
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="../static/image/logo.png" alt="Your Logo">
+       
+    </header>
+
+    <nav>
+        <p></p>
+        
+        <!-- Add your navigation links here -->
+        <ul>
+            
+            <a href="admin_page" >Admin</a>
+    
+            <a href="all_ais_details">AIS Status </a>
+            <a href="approved_ais"  >Approved AIS</a>
+            <a href="reject_status" class="act">Reject</a>
+            <a href="oparator_search">Operator</a>
+            <a href="forgot">Forgot Password</a>
+            <a href="type of user">New User</a>
+            <a href="login">Log Out</a>
+            
+            
+        </ul>
+    </nav>
+
+    <section>
+        
+            <center>
+                <table id="myTable" cellpadding="10px">
+            
+                    <thead>
+               
+                <th>PART NUMBER </th>
+                <th>AIS </th>
+                <th>PED</th>
+                  
+                    <th>PRODUCTION </th>
+                    <th>QUALITY</td>
+                <th>HOD</th>
+                <th>Command</th>
+                <th>Update</th>
+    
+                  
+            
+                </thead>
+                    <tbody>
+                    <form method="post" >
+            
+                    {% for i in a %}
+                        
+                        <tr>
+                            <h4>
+                            
+                        
+                       
+                             {%if i.RejectByPed%}
+                            
+                            <td>{{ i.product_part_number }}</td>
+                            <td><a href="{{ i.ais.url }}">AIS</a></td>
+                            <td bgcolor="#f82828">Reject</td>
+                            <td bgcolor="white"></td>
+                            <td bgcolor="white"></td>
+                            <td bgcolor="white"></td>
+                            <td bgcolor="skyblue"> {{i.RejectByPedcommand}}</td>
+                            <td bgcolor=""><a href="/update/{{i.product_part_number}}" >Update</a></td>
+                            
+                           
+                            {% endif %}
+                            
+                            {%if i.RejectdByProduction%}
+                           
+                            <td>{{ i.product_part_number }}</td>
+                            <td><a href="{{ i.ais.url }}">AIS</a></td>
+                            <td bgcolor="white"></td>
+                            <td bgcolor="#f82828">Reject</td>
+                            <td bgcolor="white"></td>
+                            <td bgcolor="white"></td>
+                            <td bgcolor="skyblue"> {{i.RejectdByProductioncommand}}</td>
+                            <td bgcolor=""><a href="/update/{{i.product_part_number}}" >Update</a></td>
+                            
+                            {% endif %}
+            
+                            {%if i.RejectdByQUA%}
+                            
+                            <td>{{ i.product_part_number }}</td>
+                            <td><a href="{{ i.ais.url }}">AIS</a></td>
+                            <td bgcolor="white"></td>
+                            
+                            <td bgcolor="white"></td>
+                            <td bgcolor="#f82828">Reject</td>
+                            <td bgcolor="white"></td>
+                            <td bgcolor="skyblue"> {{i.RejectdByQUAcommand}}</td>
+                            <td bgcolor=""><a href="/update/{{i.product_part_number}}" >Update</a></td>
+                            
+                            {% endif %}
+            
+                      
+                           
+            
+                                 
+                            {%if i.RejectdByHod%}
+                            
+                            <td>{{ i.product_part_number }}</td>
+                            <td><a href="{{ i.ais.url }}">AIS</a></td>
+                            <td bgcolor="white"></td>
+                            <td bgcolor="white"></td>
+                            <td bgcolor="white"></td>
+                            <td bgcolor="#f82828">Reject</td>
+                            <td bgcolor="skyblue"> {{i.RejectdByHodcommand}}</td>
+                            <td bgcolor=""><a href="/update/{{i.product_part_number}}" >Update</a></td>
+                           
+                            {% endif %}
+                            
+                       
+                            
+                            </h4>
+            
+                            </tr>
+                        
+            
+                     
+                        
+            
+                    {% endfor %}
+                    </form>
+                    </tbody>
+            
+                </table>
+            </center>
+    </section>
+  
+    
+    <script>
+        document.getElementById("form").addEventListener("submit",e=>{
+            e.preventDefault();
+            onApproveClick();
+        });
+                function onApproveClick() {
+                   var tbldata;
+                var status_val = document.getElementById("status_id").value;
+                if(status_val == "1"){
+                 tbldata = document.querySelector("#tbl_appr_data")[0].innerHTML;
+                 console.log(tbldata);
+                }
+                }
+            </script>
+    
+</body>
+</html>

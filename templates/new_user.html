@@ -1,0 +1,96 @@
+<head>
+    <meta charset="UTF-8">
+    <title>register</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        table {
+            margin-top: 10%;
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #8787c5;
+            color: white;
+            text-align: center;
+        }
+        td{
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #e0e0e0;
+        }
+
+      
+       
+        input {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+           
+            color: rgb(8, 8, 8);
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        input:hover {
+            background-color: rgba(154, 231, 160, 0.514);
+        }
+    </style>
+</head>
+<body>
+<center>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <th>USER ID </th>
+                <td>{{fo.user}}</td>
+            </tr>
+            <tr>
+                <th>EMAIL </th>
+                <td> {{fo.mail}}</td>
+
+            </tr>
+            <tr>
+                <th>PASSWORD</th>
+                <td>{{fo.password}}</td>
+            </tr>
+            <tr>
+                <th>ADD USER</th>
+                <td><input type="submit" value="add"> </td>
+            </tr>
+           
+        </table>
+
+    
+    </form>
+
+</center>
+</body>
+</html>

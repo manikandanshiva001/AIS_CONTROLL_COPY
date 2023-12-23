@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operator Search</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            
+        }
+
+        header {
+            background-color: #fffafa;
+            color: #fff;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+           
+        }
+
+        header img {
+            max-height: 100px; /* Set the maximum height of your logo image */
+        }
+
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+      
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        nav li {
+            margin-left: 20px;
+        }
+
+        section {
+            text-align: center;
+            margin: 20px;
+            width: 100%;
+            box-sizing: border-box;
+            background-color: rgb(104, 240, 14);
+        }
+
+        table {
+            width: 70%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: center;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #e0e0e0;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+           
+            color: #f5eeee;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #45a049;
+        }
+        
+    .search-container {
+    margin-top: 70px;
+      display: flex;
+      align-items: center;
+      background-color: #80f1ab;
+      padding: 10px;
+      border-radius:0px 5px 5px 0px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .search-container input[type="text"] {
+      border: none;
+      padding: 8px;
+      font-size: 16px;
+      width: 400px;
+      outline: none;
+    }
+
+    .search-container input[type="submit"] {
+      background-color: #4285f4;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+      font-size: 16px;
+    }
+     
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="../static/image/logo.png" alt="Your Logo">
+       
+    </header>
+
+    <nav>
+        <!-- Align items at the start -->
+        <div>
+            <ul>
+                <li><a href="login">Logout</a></li>
+                
+                <!-- Add more navigation items as needed -->
+            </ul>
+        </div>
+        
+        <!-- Align items at the end -->
+        <div>
+            <ul>
+                
+                
+                <!-- Add more navigation items as needed -->
+            </ul>
+        </div>
+    </nav>
+
+        <div class="search-container">
+    
+            <form method="post" action="search">
+                {% csrf_token %}
+            
+                <h1>Enter Part Number</h1>
+                <input type="text" placeholder="Search... "  name="product_part_number"">
+                <input type="submit" value="search">
+                   
+                 
+                        
+                    
+                  
+            </form>
+        </div>
+</body>
+</html>

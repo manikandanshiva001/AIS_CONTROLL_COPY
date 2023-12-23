@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIS STATUS</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+           
+        }
+
+        header {
+            background-color: #fffafa;
+            color: #fff;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        header img {
+            max-height: 100px; /* Set the maximum height of your logo image */
+        }
+
+        nav {
+            background-color: #161515;
+            color: #fff;
+            padding: 10px;
+            
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        nav u1 p{
+            display: flex;
+            justify-content: flex-start;
+            
+
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        nav li {
+            margin-left: 20px;
+        }
+        li a.active{
+            background-color:white ;
+            color: black;
+        }
+
+        section {
+            text-align: center;
+            margin: 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        thead {
+            background-color: #8787c5;
+            color: rgb(12, 12, 12);
+            text-align: center;
+        }
+        td,th {
+            border: 1px solid #e2dcdc;
+            padding: 15px;
+            text-align: center;
+        }
+            tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #e0e0e0;
+        }
+
+        th {
+            background-color: #86a8f0;
+        }
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+           
+            color: #f2eff5;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            background-color: black;
+        }
+
+        a:hover {
+            background-color: #45a049;
+        }
+     
+       
+        
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="../static/image/logo.png" alt="Your Logo">
+       
+    </header>
+
+    <nav>
+        <p></p>
+        
+        <!-- Add your navigation links here -->
+        <ul>
+            
+            <li><a href="production_page" class="act" >Production</a></li>
+            <li ><a href="all_ais_1" class="active">AIS Status</a></li>
+           <li><a href="approved_ais_1">Approved AIS</a></li>
+           <li><a href="reject_status_1">Reject</a></li>
+            <li><a href="login">Log Out</a></li>
+            
+        </ul>
+    </nav>
+
+    <section>
+        <center>
+        <table id="myTable">
+    
+
+            <thead>
+    
+                <th>PART NUMBER </th>
+                <th>AIS </th>
+                <th>PED</th>
+                <th>PRODUCTION </th>
+                <th>QUALITY</td>
+                <th>HOD</th>
+               
+                    
+                  
+            
+                </thead>
+                    <tbody>
+                    <form method="post" >
+            
+                    {% for i in a %}
+                        <tr>
+                        <h4>
+                        
+                        <td>{{ i.product_part_number }}</td>
+                        <td><a href="{{ i.ais.url }}">AIS</a></td>
+            
+            
+                        <!-- ped-->
+                        {% if i.ApprovedByped %}
+                         <td bgcolor="#94fa99">Approved by<br>
+                            <span> {{i.ApprovedBypedUser}}</span><br>
+                            <span>{{i.ApprovedBypeddate}}</span>
+                         </td>
+                         {%elif i.RejectByPed%}
+                         <td bgcolor="#f82828">Rejected</td>
+                         {% else %}
+                        <td bgcolor="#f8fa7f">In process</a></td>
+                        {% endif %}
+            
+                         <!-- productio-->
+                        {% if i.ApprovedByProduction %}
+                         <td bgcolor="#94fa99">Approved by<br>
+                            <span> {{i.ApprovedByProductionUser}}</span><br>
+                            <span>{{i.ApprovedByProductiondate}}</span>
+                         </td>
+                         {%elif i.RejectdByProduction%}
+                         <td bgcolor="#f82828">Rejected</td>
+                         {% else %}
+                        <td bgcolor="#f8fa7f">In process</a></td>
+                        {% endif %}
+                         <!-- QUALITY-->
+                         {% if i.ApprovedByQUA %}
+                         <td bgcolor="#94fa99">Approved by<br>
+                            <span> {{i.ApprovedByQUAUser}}</span><br>
+                            <span>{{i.ApprovedByQUAdate}}</span>
+                         </td>
+                         {%elif i.RejectdByQUA%}
+                         <td bgcolor="#f82828">Rejected</td>
+                         {% else %}
+                        <td bgcolor="#f8fa7f">In process</a></td>
+                        {% endif %}
+            
+            
+                       <!-- HOD-->
+                      {% if i.ApprovedByHod %}
+                         <td bgcolor="#94fa99">Approved by<br>
+                            <span> {{i.ApprovedByHodUser}}</span><br>
+                            <span>{{i.ApprovedBypeddate}}</span>
+                         </td>
+                         {%elif i.RejectdByHod%}
+                         <td bgcolor="#f82828">Rejected</td>
+                         {% else %}
+                        <td bgcolor="#f8fa7f">In process</a></td>
+                        {% endif %}
+            
+                       
+                         
+                        </h4>
+            
+                        </tr>
+                    {% endfor %}
+                    </form>
+                    </tbody>
+        </table>
+        </center>
+    </section>
+  
+    
+    <script>
+        document.getElementById("form").addEventListener("submit",e=>{
+            e.preventDefault();
+            onApproveClick();
+        });
+                function onApproveClick() {
+                   var tbldata;
+                var status_val = document.getElementById("status_id").value;
+                if(status_val == "1"){
+                 tbldata = document.querySelector("#tbl_appr_data")[0].innerHTML;
+                 console.log(tbldata);
+                }
+                }
+            </script>
+    
+</body>
+</html>

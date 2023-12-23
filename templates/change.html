@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>change</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+        }
+        td{
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #e0e0e0;
+        }
+        h1{
+            color: red;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <h1 color="#red">Register New Password</h1>
+<center>
+    <table>
+        <form method="post">
+              {% csrf_token %}
+            <tr>
+                <td>Username :</td>
+                <td> <input type="text" name="user" value={{d.user}}></td>
+            </tr>
+            <tr>
+                <td>Mail id:</td>
+                <td> <input type="text" name="mail" value={{d.mail}} ></td>
+            </tr>
+
+                <td>Enter New Password :</td>
+                <td> <input type="text" name="password"></td>
+
+            </tr>
+            <tr>
+                <td><td> <input type="submit" value="Change Password"></td></td>
+            </tr>
+        </form>
+    </table>
+
+</center>
+</body>
+</html>

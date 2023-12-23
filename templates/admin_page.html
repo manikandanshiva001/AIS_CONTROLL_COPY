@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+    {%load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Page with Navbar and Sidebar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        header {
+            background-color: white;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            
+        }
+        .banner-area h2 {
+font-size: 28px;
+        }
+        .btn:hover{
+    background-color: #d6c08a;
+    color: #000;
+    border-radius: 10px;
+}
+.banner-area{
+    width: 90%;
+    height: 100vh;
+    background: white;
+    background-position: center;
+    -webkit-background-size:cover;
+    background-size:cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 2vw;
+    color: black;
+}
+
+.btn{
+    text-decoration: none;
+    padding: 10px 50px;
+    color: #090909;
+    border:3px solid #a5b6e0;
+    transition: 0.6s ease;
+    animation: animate 2s 1;
+    font-size: 15px;
+    font-weight: 900;
+    border-radius: 1px;
+}
+        nav {
+            display: flex;
+            background-color: #ee3737;
+            padding: 10px;
+        }
+
+        nav a {
+            color: rgb(26, 23, 23);
+            text-decoration: none;
+            padding: 10px;
+            margin: 0 10px;
+            transition: 0.6s ease;
+            animation: animate 2s 1;
+            border-radius: 10px;
+
+            
+        }
+
+        nav a:hover {
+            background-color: #a6e6a4;
+        }
+        nav a:active {
+            background-color: #cc3e3e;
+        }
+
+        aside {
+            flex: 0 0 200px;
+            background-color: #f4f4f4;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        main {
+            flex: 1;
+            padding: 20px;
+        }
+       
+        
+        .act{
+            text-decoration: none;
+    padding: 10px 50px;
+    color: #090909;
+    margin: 0 10px;
+    transition: 0.6s ease;
+    animation: animate 2s 1;
+    font-size: 15px;
+    font-weight: 900;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="../static/image/logo.png" alt="Logo">
+</header>
+
+<nav>
+    
+    <a href="admin_page" class="act" >Home</a>
+    
+    <a href="all_ais_details">AIS STATUS </a>
+    <a href="ped_page">PED</a>
+    <a href="oparator_search">OPERATOR</a>
+    <a href="forgot">Forgot Password</a>
+    <a href="type of user">New User</a>
+    <a href="reject_status">Reject</a>
+            
+    
+</nav>
+
+<div style="display: flex;">
+    <aside>
+        <h2>User Details</h2>
+        <table align="center">
+            <tr>
+                <th>Name :</th>
+            <td>{{i.user}}</td>
+            </tr>
+            <tr>
+                <th>Mail :</th>
+            <td>{{i.mail}}</td>
+            </tr>
+          
+            
+            
+        </table>
+        
+        
+
+    </aside>
+
+    <main>
+        <div class="banner-area">
+
+            <h2>Add New AIS</h2>
+            <a href="add" class="btn">click here</a>
+        </div>
+    </main>
+</div>
+
+</body>
+</html>
