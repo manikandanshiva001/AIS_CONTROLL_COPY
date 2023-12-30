@@ -167,7 +167,7 @@
                         {% if i.ApprovedByped %}
                          <td bgcolor="#94fa99">Approved by<br>
                             <span> {{i.ApprovedBypedUser}}</span><br>
-                            <span>{{i.ApprovedBypeddate}}</span>
+                            <span id="MyDateField">{{i.ApprovedBypeddate}}</span>
                          </td>
                          {%elif i.RejectByPed%}
                          <td bgcolor="#f82828">Rejected</td>
@@ -179,7 +179,7 @@
                         {% if i.ApprovedByProduction %}
                          <td bgcolor="#94fa99">Approved by<br>
                             <span> {{i.ApprovedByProductionUser}}</span><br>
-                            <span>{{i.ApprovedByProductiondate}}</span>
+                            <span class="id_MyDateField">{{i.ApprovedByProductiondate}}</span>
                          </td>
                          {%elif i.RejectdByProduction%}
                          <td bgcolor="#f82828">Rejected</td>
@@ -224,20 +224,11 @@
     </section>
   
     
-    <script>
-        document.getElementById("form").addEventListener("submit",e=>{
-            e.preventDefault();
-            onApproveClick();
+    <script type="text/javascript">
+        $(function() {
+               $("#id_MyDateField").datepicker({ dateFormat: 'dd/mm/yy' });
+       
         });
-                function onApproveClick() {
-                   var tbldata;
-                var status_val = document.getElementById("status_id").value;
-                if(status_val == "1"){
-                 tbldata = document.querySelector("#tbl_appr_data")[0].innerHTML;
-                 console.log(tbldata);
-                }
-                }
-            </script>
-    
+    </script>
 </body>
 </html>

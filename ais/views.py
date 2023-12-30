@@ -3,7 +3,7 @@ from ais.models import ais,admin_login,production_login,quality_login,PED_Approv
 from ais.forms import aisForm,admin_loginForm,production_loginForm,quality_loginForm,hod_loginForm,operator_loginForm
 from ais.models import production_Approve,PED_Reject,production_Reject,QUALITY_Reject,Hod_Reject
 from localStoragePy import localStoragePy
-from datetime import datetime
+import datetime
 
 localStorage = localStoragePy('AIS_Controller', 'json')
 
@@ -21,8 +21,8 @@ def ped_approve(request,product_part_number):
     g = ais.objects.all()
     
     
-    your_datetime = datetime(2023, 1, 15 ) 
-    date=your_datetime.date() 
+    your_datetime = datetime.date.today()
+    date=your_datetime
    
     a=ais.objects.filter(product_part_number=product_part_number).update(ApprovedByped = True, ApprovedBypedUser=localStorage.getItem("user_name"),
                                                                          ApprovedBypeddate=date)
@@ -87,8 +87,8 @@ def reject_status_1(request):
 def production_approve(request,product_part_number):
     g = ais.objects.all()
 
-    your_datetime = datetime(2023, 1, 15 ) 
-    date=your_datetime.date()
+    your_datetime = datetime.date.today()
+    date=your_datetime
     a=ais.objects.filter(product_part_number=product_part_number).update(ApprovedByProduction = True,ApprovedByProductionUser=localStorage.getItem("user_name"),
                                                                          ApprovedByProductiondate=date)
     data = ais.objects.get(product_part_number=product_part_number)
@@ -140,8 +140,9 @@ def all_ais_2(request):
 
 def quality_approve(request,product_part_number):
     g = ais.objects.all()
-    your_datetime = datetime(2023, 1, 15 ) 
-    dates=your_datetime.date()
+    your_datetime = datetime.date.today()
+    print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ :",your_datetime)
+    dates=your_datetime
     a=ais.objects.filter(product_part_number=product_part_number).update(ApprovedByQUA = True,ApprovedByQUAUser=localStorage.getItem("user_name"),
                                                                          ApprovedByQUAdate=dates)
     data = ais.objects.get(product_part_number=product_part_number)
@@ -209,9 +210,9 @@ def delete_hod(request,id):
 
 def hod_approve(request,product_part_number):
     g = ais.objects.all() 
-    your_datetime = datetime(2023, 1, 15 )  
+    your_datetime =datetime.date.today() 
     
-    dates=your_datetime.date()
+    dates=your_datetime
        
     a=ais.objects.filter(product_part_number=product_part_number).update(ApprovedByHod = True,ApprovedByHodUser=localStorage.getItem("user_name"),
                                                                          ApprovedByHoddate=dates)
