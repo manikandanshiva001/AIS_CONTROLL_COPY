@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Operator Search</title>
+    <title> OPERATOT VIEW</title>
     <style>
         body {
             margin: 0;
@@ -12,7 +12,6 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            
         }
 
         header {
@@ -22,7 +21,6 @@
             width: 100%;
             box-sizing: border-box;
             text-align: center;
-           
         }
 
         header img {
@@ -57,16 +55,14 @@
         section {
             text-align: center;
             margin: 20px;
-            width: 100%;
+            width: 60%;
             box-sizing: border-box;
-            background-color: rgb(104, 240, 14);
         }
 
         table {
-            width: 70%;
+            width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
-            
         }
 
         th, td {
@@ -97,39 +93,6 @@
         a:hover {
             background-color: #45a049;
         }
-        
-    .search-container {
-    margin-top: 70px;
-      display: flex;
-      align-items: center;
-      background-color: #80f1ab;
-      padding: 10px;
-      border-radius:0px 5px 5px 0px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    .search-container input[type="text"] {
-      border: none;
-      padding: 8px;
-      font-size: 16px;
-      width: 400px;
-      outline: none;
-    }
-
-    .search-container input[type="submit"] {
-      background-color: #4285f4;
-      color: #fff;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 0 5px 5px 0;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    li a.active{
-            background-color:white ;
-            color: black;
-        }
-
      
     </style>
 </head>
@@ -144,10 +107,9 @@
         <!-- Align items at the start -->
         <div>
             <ul>
-                <li><a href="oparator_search" class="active">AIS </a></li>
-                <li><a href="pdi_search">PDI</a></li>
-                <li><a href="login">Logout</a></li>
-                
+                <li><a href="oparator_search">Go Back</a></li>
+                <li><a href="/login">Log Out</a></li>
+               
                 <!-- Add more navigation items as needed -->
             </ul>
         </div>
@@ -155,27 +117,49 @@
         <!-- Align items at the end -->
         <div>
             <ul>
-                
-                
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
                 <!-- Add more navigation items as needed -->
             </ul>
         </div>
     </nav>
 
-        <div class="search-container">
-    
-            <form method="post" action="search">
-                {% csrf_token %}
+
+    <section>
+        <table cellpadding="10px">
+
+            <thead>
+        
+        <th>PART NUMBER </th>
+        
+        <th>  PDI </th>
             
-                <h1>Enter Part Number</h1>
-                <input type="text" placeholder="Search... "  name="product_part_number"">
-                <input type="submit" value="search">
-                   
-                 
-                        
-                    
-                  
+    
+        </thead>
+            <tbody>
+            <form method="post" >
+    
+            {% for i in a %}
+                <tr>
+                <h4>
+                
+                <td>{{ i.product_part_number }}</td>
+                
+                
+                <td><a href="{{ i.pdi.url }}" style="background-color: #45a049;" >PDI</a></td>
+               
+                </h4>
+    
+                </tr>
+            {% endfor %}
             </form>
-        </div>
+            </tbody>
+    
+        </table>
+        
+        
+    </section>
+    
+    
 </body>
 </html>

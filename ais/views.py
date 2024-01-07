@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,HttpResponse
 from ais.models import ais,admin_login,production_login,quality_login,PED_Approve,QUALITY_Approve,hod_login,oparator_login,Hod_Approve
-from ais.forms import aisForm,admin_loginForm,production_loginForm,quality_loginForm,hod_loginForm,operator_loginForm
-from ais.models import production_Approve,PED_Reject,production_Reject,QUALITY_Reject,Hod_Reject
+from ais.forms import aisForm,admin_loginForm,pdiForm,production_loginForm,quality_loginForm,hod_loginForm,operator_loginForm
+from ais.models import production_Approve,PED_Reject,production_Reject,QUALITY_Reject,Hod_Reject,pdi
 from localStoragePy import localStoragePy
 import datetime
 
@@ -134,6 +134,37 @@ def reject_status_2(request):
     list_two=ais.objects.filter(ApprovedByQUA=True,ApprovedByProduction=True,ApprovedByped=True,ApprovedByHod=True)
     one_not_two = set(list_one).difference(list_two)
     return render(request,'reject_status_2.html',{'a':one_not_two})
+def add_pdi(request):
+    fo=pdiForm
+    if request.method=="POST":
+        s=pdiForm(request.POST,request.FILES)
+        if s.is_valid():
+            s.save()
+            return redirect("/all_pdi")
+    return render(request,'pdi.html',{"fo":fo})
+def add_pdis(request):
+    fo=pdiForm
+    if request.method=="POST":
+        s=pdiForm(request.POST,request.FILES)
+        s.save
+        return redirect("/all_pdi")
+    return render(request,"pdi.html",{"fo":fo})
+def all_pdi(request):
+    a=pdi.objects.all()
+    return render (request,"all_pdi.html",{"a":a})
+def pdi_delete(request,id):
+    s=pdi.objects.get(id=id)
+    s.delete()
+    return redirect('/all_pdi')
+def padi_update(request,product_part_number):
+    fo=pdi.objects.get(product_part_number=product_part_number)
+    if request.method=="POST":
+        k=pdiForm(request.POST,request.FILES,instance=fo)
+        if k.is_valid():
+            k.save()
+            return redirect('/all_pdi')
+    return render(request,'padi_update.html',{'s':fo})
+
 def all_ais_2(request):
     a=ais.objects.filter(ApprovedByHod=False)
     return render(request,"all_ais_status_2.html",{'a':a})
@@ -373,8 +404,13 @@ def update_to_lives(request):
 def controll_copy(request,product_part_number):
     a = ais.objects.filter(ApprovedByped=True,ApprovedByQUA=True,product_part_number=product_part_number,ApprovedByHod = True,ApprovedByProduction=True)
     return render(request,'controll_copy.html',{'a':a})
+def pdi_search(request):
+    return render (request,"pdi_search.html")
     
-
+def pdi_searchs(request):
+    product_part_number=request.POST.get('product_part_number')
+    a=pdi.objects.filter(product_part_number=product_part_number)
+    return render(request,"pdi_searchs.html",{"a":a})
     ##########    FORGOT PASSWORD   ####################
 def forgot(request):
     return render(request,'forgot.html')

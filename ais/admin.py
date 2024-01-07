@@ -1,6 +1,6 @@
 from django.contrib import admin
 from ais.models import ais,admin_login,production_Approve,production_login,quality_login,PED_Approve,QUALITY_Approve,hod_login,oparator_login,Hod_Approve
-from ais.models import PED_Reject,QUALITY_Reject,Hod_Reject,production_Reject
+from ais.models import PED_Reject,QUALITY_Reject,Hod_Reject,production_Reject,pdi
 # Register your models here.
 class aisAdmin(admin.ModelAdmin):
     list=["product_name","product_part_number",'ais',"ApprovedByProduction",'ApprovedByQUA','ApprovedByHod',"reject"]
@@ -31,7 +31,8 @@ class QUALITY_RejectAdmin(admin.ModelAdmin):
     list=["product_part_number"]
 class Hod_RejectAdmin(admin.ModelAdmin):
     list=["product_part_number"]
-
+class pdiAdmin(admin.ModelAdmin):
+    list=["product_part_number","pdi"]
 admin.site.register(ais,aisAdmin)
 admin.site.register(admin_login,admin_loginAdmin)
 admin.site.register(production_login,production_loginAdmin)
@@ -45,3 +46,4 @@ admin.site.register(production_Approve,production_ApproveAdmin)
 admin.site.register(production_Reject,production_RejectAdmin)
 admin.site.register(PED_Reject,PED_RejectAdmin)
 admin.site.register(QUALITY_Reject,QUALITY_RejectAdmin)
+admin.site.register(pdi,pdiAdmin)

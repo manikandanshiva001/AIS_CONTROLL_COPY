@@ -47,6 +47,9 @@ class ais(models.Model):
 
     def __str__(self):
         return self.product_part_number
+class pdi(models.Model):
+    product_part_number = models.CharField(max_length=200,unique=True)
+    pdi = models.FileField(upload_to='static/pdi', validators=[validate])
 
 ########################### Appprove Table############################
 class PED_Approve(models.Model):

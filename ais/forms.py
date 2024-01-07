@@ -1,5 +1,5 @@
 from django import forms
-from ais.models import ais,admin_login,production_login,quality_login,hod_login,oparator_login
+from ais.models import ais,admin_login,production_login,quality_login,hod_login,oparator_login,pdi
 
 
 class admin_loginForm(forms.ModelForm):
@@ -25,4 +25,8 @@ class aisForm(forms.ModelForm):
 class operator_loginForm(forms.ModelForm):
     class Meta:
         model=oparator_login
+        fields="__all__"
+class pdiForm(forms.ModelForm):
+    class Meta:
+        model=pdi
         fields="__all__"

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIS STATUS</title>
+    <title>ALL PDI</title>
     <style>
         body {
             margin: 0;
@@ -125,12 +125,12 @@
         <!-- Add your navigation links here -->
         <ul>
             
-            <li><a href="quality_page" class="act" >Quality</a></li>
-            <li ><a href="all_ais_2" class="active">AIS Status</a></li>
-           <li><a href="approved_ais_2">Approved AIS</a></li>
+            <li><a href="quality_page"  >Quality</a></li>
+            <li ><a href="all_ais_2" >AIS Status</a></li>
+           <li><a href="approved_ais_2" class="#">Approved AIS</a></li>
            <li><a href="reject_status_2">Reject</a></li>
-           <li><a href="add_pdi"  >Add PDI</a></li>
-            <li> <a href="all_pdi" >All PDI</a></li>
+           <li><a href="add_pdi" class="act" >Add PDI</a></li>
+            <li> <a href="all_pdi" class="active">All PDI</a></li>
             <li><a href="login">Log Out</a></li>
             
         </ul>
@@ -144,11 +144,10 @@
             <thead>
     
                 <th>PART NUMBER </th>
-                <th>AIS </th>
-                <th>PED</th>
-                <th>PRODUCTION </th>
-                <th>QUALITY</td>
-                <th>HOD</th>
+                <th>PDI </th>
+                <th>UPDATE</th>
+                <th>DELETE</th>
+                
                
                     
                   
@@ -159,63 +158,12 @@
             
                     {% for i in a %}
                         <tr>
-                        <h4>
+                       
                         
                         <td>{{ i.product_part_number }}</td>
-                        <td><a href="{{ i.ais.url }}">AIS</a></td>
-            
-            
-                        <!-- ped-->
-                        {% if i.ApprovedByped %}
-                         <td bgcolor="#94fa99">Approved by<br>
-                            <span> {{i.ApprovedBypedUser}}</span><br>
-                            <span>{{i.ApprovedBypeddate}}</span>
-                         </td>
-                         {%elif i.RejectByPed%}
-                         <td bgcolor="#f82828">Rejected</td>
-                         {% else %}
-                        <td bgcolor="#f8fa7f">In process</a></td>
-                        {% endif %}
-            
-                         <!-- productio-->
-                        {% if i.ApprovedByProduction %}
-                         <td bgcolor="#94fa99">Approved by<br>
-                            <span> {{i.ApprovedByProductionUser}}</span><br>
-                            <span>{{i.ApprovedByProductiondate}}</span>
-                         </td>
-                         {%elif i.RejectdByProduction%}
-                         <td bgcolor="#f82828">Rejected</td>
-                         {% else %}
-                        <td bgcolor="#f8fa7f">In process</a></td>
-                        {% endif %}
-                         <!-- QUALITY-->
-                         {% if i.ApprovedByQUA %}
-                         <td bgcolor="#94fa99">Approved by<br>
-                            <span> {{i.ApprovedByQUAUser}}</span><br>
-                            <span>{{i.ApprovedByQUAdate}}</span>
-                         </td>
-                         {%elif i.RejectdByQUA%}
-                         <td bgcolor="#f82828">Rejected</td>
-                         {% else %}
-                        <td bgcolor="#f8fa7f">In process</a></td>
-                        {% endif %}
-            
-            
-                       <!-- HOD-->
-                      {% if i.ApprovedByHod %}
-                         <td bgcolor="#94fa99">Approved by<br>
-                            <span> {{i.ApprovedByHodUser}}</span><br>
-                            <span>{{i.ApprovedBypeddate}}</span>
-                         </td>
-                         {%elif i.RejectdByHod%}
-                         <td bgcolor="#f82828">Rejected</td>
-                         {% else %}
-                        <td bgcolor="#f8fa7f">In process</a></td>
-                        {% endif %}
-            
-                       
-                         
-                        </h4>
+                        <td><a href="{{ i.pdi.url }}">PDI</a></td>
+                        <td><a href="pdi_update/{{i.product_part_number}}">Update</a></td>
+                        <td><a href="pdi_delete/{{i.id}}">Delete</a></td>
             
                         </tr>
                     {% endfor %}
@@ -227,6 +175,5 @@
   
     
    
-    
 </body>
 </html>

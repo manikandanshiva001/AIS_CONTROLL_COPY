@@ -46,10 +46,16 @@ urlpatterns = [
     path("all_ais_2",views.all_ais_2),
     path("approved_ais_2",views.approved_ais_2),
     path("reject_status_2",views.reject_status_2),
+    path("add_pdi",views.add_pdi),
+    path("all_pdi",views.all_pdi),
+    path("pdi_update/<product_part_number>",views.padi_update),
+    path("pdi_delete/<id>",views.pdi_delete),
      ############### OPARATOR #############
      path("oparator_search",views.update_to_live),
      path('search',views.update_to_lives),
      path('controll_copy/<product_part_number>',views.controll_copy),
+      path("pdi_search",views.pdi_search),
+     path("pdi_searchs",views.pdi_searchs),
      ############### FORGOT PASSWORD #############
      path("forgot",views.forgot),
      path("check",views.check),

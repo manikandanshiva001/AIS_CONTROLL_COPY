@@ -1,9 +1,9 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>upadte pdi</title>
     <style>
         
         body {
@@ -65,30 +65,41 @@
         input:hover {
             background-color: rgba(154, 231, 160, 0.514);
         }
-    </style>
+        .row{
+            background-color: rgba(236,240,241,0.5);
+            pointer-events: none;
+            width: 100%;
+            display: none;
+
+        }
+</style>
 </head>
 <body>
-    <form action="" method="POST">
-        {% csrf_token %}
-    <center>
-        <table>
+<center>
+    <table>
+        <form method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+           
             <tr>
-                <th>Product name</th>
-                <td><input type="text" value="{{data.product_part_number}}"></td>
-            </tr>
-            <tr>
-                <th>RESION FOR REJECTION</th>
-                <td><textarea name="command" placeholder="comment"></textarea></td>
-            </tr>
-            <tr>
-                <td colspan="2">Reject<input type="checkbox" name="boxes" value="{{data.product_part_number}}"></td>
+                <th>PART NUMBER</th>
                 
+                <td> <input type="text" name="product_part_number" value="{{s.product_part_number}}"></td>
+            </tr>
+         
+
+             <tr>
+                <th>PDI</th>
+                 <td><input type="file" name="pdi" value="{{s.pdi}}"></td>
+               
             </tr>
             <tr>
-                <td colspan="2"><input type="submit" value="Reject"></td>
+                <td colspan="2"><input type="submit" value="update"></td>
             </tr>
-        </table>
-    </center>
-    </form>
+            
+
+        </form>
+    </table>
+
+</center>
 </body>
 </html>
